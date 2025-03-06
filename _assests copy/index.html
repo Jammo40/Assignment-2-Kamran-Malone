@@ -1,0 +1,85 @@
+<head>
+    <title>Is this your Number?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #34343488;
+            border-radius: 15px;
+            box-shadow: 2px 2px 12px rgba(37, 34, 34, 0.2);
+            background: white;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 9px;
+            color: white;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .yes-button {
+            background-color: green;
+        }
+        .yes-button:hover {
+            background-color: darkgreen;
+            transform: scale(1.1);
+        }
+        .no-button {
+            background-color: red;
+        }
+        .no-button:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+        #output {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .response-buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Is this your phone number?</h2>
+        <p id="output"></p>
+        <div class="response-buttons">
+            <button class="yes-button" onclick="respond('Yes')">Yes</button>
+            <button class="no-button" onclick="generateNewNumber()">No</button>
+        </div>
+        <p id="responseMessage"></p>
+    </div>
+    <script>
+        function generatePhoneNumber() {
+            let areaCode = Math.floor(100 + Math.random() * 900);
+            let firstPart = Math.floor(100 + Math.random() * 900);
+            let secondPart = Math.floor(1000 + Math.random() * 9000);
+            return `(${areaCode}) ${firstPart}-${secondPart}`;
+        }
+
+        function generateNewNumber() {
+            document.getElementById("output").innerText = generatePhoneNumber();
+            document.getElementById("responseMessage").innerText = "";
+        }
+        
+        function respond(answer) {
+            alert("Congrats you wasted your time: " + answer);
+        }
+
+        document.getElementById("output").innerText = generatePhoneNumber();
+    </script>
+</body>
